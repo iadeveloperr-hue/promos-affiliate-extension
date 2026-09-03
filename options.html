@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Promos — Configurações</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 20px; color: #222; }
+    h2 { font-size: 18px; margin-bottom: 24px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input { width: 100%; box-sizing: border-box; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    .group { margin-bottom: 20px; }
+    .hint { font-size: 11px; color: #888; margin-top: 4px; }
+    button { margin-top: 8px; padding: 8px 20px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+    button:hover { background: #1558b0; }
+    #status { margin-top: 16px; font-size: 13px; color: #2e7d32; min-height: 18px; }
+  </style>
+</head>
+<body>
+  <h2>⚙️ Configurações — Extensão Promos</h2>
+
+  <div class="group">
+    <label for="imgbbKey">API Key — imgbb.com</label>
+    <input id="imgbbKey" type="text" placeholder="af9851d6…">
+    <p class="hint">Necessário para enviar imagens sem fundo ao Canva. <a href="https://api.imgbb.com" target="_blank">Obter chave</a></p>
+  </div>
+
+  <div class="group">
+    <label for="sheetsScriptUrl">URL do Google Apps Script (Sheets)</label>
+    <input id="sheetsScriptUrl" type="text" placeholder="https://script.google.com/macros/s/…">
+    <p class="hint">URL de implantação do Apps Script que recebe os dados para o Canva.</p>
+  </div>
+
+  <div class="group">
+    <label for="queueScriptUrl">URL da Fila compartilhada (Apps Script)</label>
+    <input id="queueScriptUrl" type="text" placeholder="https://script.google.com/macros/s/…">
+    <p class="hint">Implantação SEPARADA (lib/apps-script-queue.gs) que sincroniza a Fila de Revisão entre perfis. Cole a MESMA URL nos perfis Kate e Musculosas.</p>
+  </div>
+
+  <div class="group">
+    <label for="canvaDesignUrl">URL do design Canva (Bulk Create)</label>
+    <input id="canvaDesignUrl" type="text" placeholder="https://www.canva.com/design/…/edit">
+    <p class="hint">Design onde você usa o Bulk Create. Deixe em branco para abrir canva.com.</p>
+  </div>
+
+  <div class="group">
+    <label for="metaStoryUrl">URL do Meta Business Suite (Story)</label>
+    <input id="metaStoryUrl" type="text" placeholder="https://business.facebook.com/latest/story_composer/?asset_id=…">
+    <p class="hint">Cole a URL que abre o criador de story da sua conta. Encontre em business.facebook.com → Criar → Story.</p>
+  </div>
+
+  <h2 style="font-size:15px;margin-top:32px;border-top:1px solid #eee;padding-top:20px;">✨ Frase de chamada por IA (opcional)</h2>
+  <p class="hint" style="margin-bottom:16px;">Gera sugestões de frase de chamada com a IA da Claude (modelo Haiku 4.5 — rápido e barato). Sem a chave, o campo de frase continua manual + banco de frases salvas.</p>
+
+  <div class="group">
+    <label for="anthropicApiKey">Chave da API Anthropic</label>
+    <input id="anthropicApiKey" type="password" placeholder="sk-ant-...">
+    <p class="hint">Crie em console.anthropic.com → API Keys. <b>Defina um limite de gasto mensal</b> em Billing → Limits (ex: US$ 5) para garantir teto de custo. A chave fica salva neste perfil do Chrome.</p>
+  </div>
+
+  <h2 style="font-size:15px;margin-top:32px;border-top:1px solid #eee;padding-top:20px;">🔀 Aprovação entre perfis (avançado)</h2>
+  <p class="hint" style="margin-bottom:16px;">Permite que, ao aprovar um item do outro grupo, ele abra no Chrome do perfil certo. Exige o programa-ponte instalado (native-host/instalar.bat).</p>
+
+  <div class="group">
+    <label for="profileGroup">Grupo DESTE perfil do Chrome</label>
+    <select id="profileGroup" style="width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:14px;">
+      <option value="">— não definido —</option>
+      <option value="kate">❣️ Promos da Kate</option>
+      <option value="musculosas">💪 Ofertas Musculosas</option>
+    </select>
+    <p class="hint">No Chrome da Kate escolha "Promos da Kate"; no do Musculosas escolha "Ofertas Musculosas".</p>
+  </div>
+
+  <div class="group">
+    <label for="otherProfileDir">Pasta do Chrome do OUTRO grupo</label>
+    <input id="otherProfileDir" type="text" placeholder="Profile 4">
+    <p class="hint">O nome da pasta do perfil do outro grupo (veja em chrome://version → "Caminho do perfil", o final). Ex: no perfil da Kate, aqui vai a pasta do Musculosas.</p>
+  </div>
+
+  <div class="group">
+    <label for="chromePath">Caminho do Chrome (chrome.exe)</label>
+    <input id="chromePath" type="text" placeholder="C:\Program Files\Google\Chrome\Application\chrome.exe">
+    <p class="hint">Deixe em branco para usar o caminho padrão.</p>
+  </div>
+
+  <button id="save">Salvar</button>
+  <div id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

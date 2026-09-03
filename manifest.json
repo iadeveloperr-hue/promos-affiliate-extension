@@ -1,0 +1,126 @@
+{
+  "manifest_version": 3,
+  "name": "Promos",
+  "version": "0.1.0",
+  "description": "Gera posts de WhatsApp com link de afiliado a partir de produtos Amazon, Mercado Livre e Shopee.",
+  "action": {},
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "clipboardWrite",
+    "storage",
+    "unlimitedStorage",
+    "alarms",
+    "tabs",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://*.amazon.com.br/*",
+    "https://www.amazon.com.br/*",
+    "https://*.mercadolivre.com.br/*",
+    "https://shopee.com.br/*",
+    "https://*.shopee.com.br/*",
+    "https://amzn.to/*",
+    "https://meli.la/*",
+    "https://shope.ee/*",
+    "https://web.whatsapp.com/*",
+    "https://script.google.com/*",
+    "https://api.imgbb.com/*",
+    "https://*.mlstatic.com/*",
+    "https://*.media-amazon.com/*",
+    "https://*.ssl-images-amazon.com/*",
+    "https://*.susercontent.com/*",
+    "https://*/*"
+  ],
+  "commands": {
+    "gerar-kate": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K"
+      },
+      "description": "Gerar post — Promos da Kate"
+    },
+    "gerar-musculosas": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U"
+      },
+      "description": "Gerar post — Ofertas Musculosas"
+    },
+    "fila-revisao": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L"
+      },
+      "description": "Abrir Fila de Revisão"
+    },
+    "abrir-lote": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O"
+      },
+      "description": "Abrir Lote do Canva"
+    },
+    "garimpar": {
+      "description": "Garimpar mensagens (WhatsApp) — definir tecla em chrome://extensions/shortcuts"
+    },
+    "rodar-radar": {
+      "description": "Rodar Radar agora — definir tecla em chrome://extensions/shortcuts"
+    },
+    "capturar-ml": {
+      "description": "Capturar comissões ML — definir tecla em chrome://extensions/shortcuts"
+    },
+    "capturar-ranking": {
+      "description": "Capturar ranking da página — definir tecla em chrome://extensions/shortcuts"
+    },
+    "criar-frase": {
+      "description": "Criar post de frase/meme — definir tecla em chrome://extensions/shortcuts"
+    },
+    "gerar-jotape": {
+      "description": "Gerar post — JOTAPETGC (definir tecla em chrome://extensions/shortcuts)"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/template-kate-story.png",
+        "content/kate-logo.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.amazon.com.br/*",
+        "https://*.mercadolivre.com.br/*",
+        "https://*.shopee.com.br/*",
+        "https://web.whatsapp.com/*"
+      ],
+      "css": [
+        "content/overlay.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://*.amazon.com.br/*",
+        "https://*.mercadolivre.com.br/*",
+        "https://*.shopee.com.br/*"
+      ],
+      "js": [
+        "content/handoff.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
