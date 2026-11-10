@@ -6,7 +6,7 @@
 // relatório, semanas depois.
 //
 // Como cada marketplace se identifica (verificado ao vivo):
-//   Mercado Livre → "user_id":"<ID>" no HTML da página + nickname no
+//   Mercado Livre → "user_id":"480263032" no HTML da página + nickname no
 //                   cabeçalho (.nav-header-user-nickname). O user_id é o que
 //                   vale: não muda se a pessoa trocar o nome de exibição.
 //   Amazon        → só a saudação "Olá, <primeiro nome>", que é fraca (duas

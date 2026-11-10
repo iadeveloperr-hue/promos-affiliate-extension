@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Promos",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Gera posts de WhatsApp com link de afiliado a partir de produtos Amazon, Mercado Livre e Shopee.",
   "action": {},
   "permissions": [

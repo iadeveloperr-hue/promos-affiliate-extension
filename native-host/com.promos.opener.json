@@ -1,0 +1,9 @@
+{
+  "name": "com.promos.opener",
+  "description": "Promos — abre uma URL em outro perfil do Chrome",
+  "path": "promos_opener.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://clgabolddpphliomkjobmcggnpbddaio/"
+  ]
+}
